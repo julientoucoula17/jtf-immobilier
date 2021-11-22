@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos annonces{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Nos annonces</h1>
+    {% dump(ads) %}
+    <div class="row ">
+        {% for ad in ads %}
+            {% set url =  path('ads_show', {'slug': ad.slug})  %}
+            <div class="col-md-4 mt-5">
+                <div class="card bg-light mb3">
+                    <div class="card-header text-center">
+                        {{ ad.rooms }} chambres, <strong>{{ ad.price }}&euro; / nuit</strong><br>
+                        <small>Pas encore noté</small>
+                    </div>
+                    <a href="{{ url }}">
+                    <img src="{{ ad.coverImage }}" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{{ url }}">
+                                {{ ad.title }}
+                            </a>
+
+                        </h4>
+                        <p class="card-text">
+                                {{ ad.introduction }}
+                        </p>
+                        <a href="{{ url }}" class="btn btn-primary">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+      {#  {% for i in 0..30 %}
+            <div class="col-md-4 mt-5">
+                <div class="card bg-light mb3">
+                    <div class="card-header text-center">
+                        3 chambres, <b>49 nuits</b> <br>
+                        <small>Pas encore noté</small>
+                    </div>
+                    <img src="http://placehold.it/1000x400" alt="Image de l'appartement" style="height: 200px; width: 100%; display: block">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Appartement 1
+                        </h4>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At beatae consectetur distinctio, dolor dolorum excepturi hic illo modi nam vero!
+                        </p>
+                        <a href="#" class="btn btn-primary">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}#}
+
+
+    </div>
+</div>
+{% endblock %}
